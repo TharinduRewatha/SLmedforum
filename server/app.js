@@ -5,6 +5,8 @@ var logger = require('morgan');
 
 const { notFound, errorHandler } = require('./middlewares');
 
+
+const auth = require('./auth')
 var app = express();
 
 app.use(logger('dev'));
@@ -19,6 +21,7 @@ app.get('/', (req, res) => {
     });
 });
 
+app.use('/auth', auth);
 
 
 
