@@ -1,0 +1,23 @@
+{
+    "name": "SLmedforum",
+    "version": "1.0.0",
+    "description": "We are an online community for current and prospective medical, dental and allied health students and early career professionals from Sri Lanka",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TharinduRewatha/SLmedforum.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/TharinduRewatha/SLmedforum/issues"
+    },
+    "homepage": "https://github.com/TharinduRewatha/SLmedforum#readme",
+    "dependencies": {
+        "bootswatch": "^5.1.1"
+    }
+}
