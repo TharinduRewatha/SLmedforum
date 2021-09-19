@@ -5,7 +5,7 @@ const logger = require('morgan');
 
 require('dotenv').config();
 
-const { notFound, errorHandler } = require('./middlewares');
+const { checkAuthHeaderSetUser, checkAuthHeaderSetUserUnAuthorized, notFound, errorHandler } = require('./middlewares');
 
 
 const auth = require('./auth')
@@ -16,11 +16,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(cookieParser());
+app.use(checkAuthHeaderSetUser);
 
 //Routes go here
 app.get('/', (req, res) => {
     res.json({
-        message: 'Welcome to community API! 🌈💚'
+        message: 'Welcome to SL MED FORUM API! 🌈💚'
     });
 });
 
