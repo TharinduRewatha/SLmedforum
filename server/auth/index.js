@@ -23,9 +23,9 @@ router.get('/google/callback', (req, res, next) => {
         //Create a web token
         try {
             const token = await create(user);
-            res.json({ token })
+            res.redirect(`${process.env.CLIENT_REDIRECT}${token}`);
         } catch (error) {
-            next(error)
+            res.redirect(`${process.env.CLIENT_ERROR_REDIRECT}${error.message}`);
         }
 
 

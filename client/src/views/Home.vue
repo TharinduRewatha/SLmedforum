@@ -23,8 +23,15 @@
 <script>
 
 export default {
-  name: 'Home',
-  components: {
-  },
+  name: 'home',
+   computed:{
+      getLoginURL(){
+        if(window.location.hostname ==='localhost'){
+          return 'http://localhost:3000/auth/google'
+        }else{
+          return 'http://slmedforum.vercel.app/auth/google';
+        }
+      }
+    }
 };
 </script>
