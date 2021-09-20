@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const db = require('../db');
 
-//const { insertIntoTableAndValidate } = require('./index');
+const { insertIntoTableAndValidate } = require('./index');
 
 const schema = Joi.object().keys({
     display_name: Joi.string().required(),
@@ -16,6 +16,9 @@ const schema = Joi.object().keys({
 });
 
 module.exports = {
+    findAdmins() {
+        return db('users').where('role_id', 3);
+    },
     findByEmail(email) {
         return db('users').where('email', email).first();
     },
@@ -24,11 +27,6 @@ module.exports = {
         return rows[0];
     },
     insert(user) {
-        const result = Joi.validate(user, schema);
-        if (result.error === null) {
-            return db('users').insert(user);
-        } else {
-            return Promise.reject(result.error);
-        }
+        return insertIntoTableAndValidate('users', user, schema);
     }
 };

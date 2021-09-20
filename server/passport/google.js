@@ -4,13 +4,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const users = require('../queries/users')
 
-// passport.serializeUser((user, done) => {
-//     done(null, user);
-// });
-// passport.deserializeUser((id, done) => {
-//     done(null, id);
-// });
-
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -36,6 +29,10 @@ passport.use(new GoogleStrategy({
             user = await users.update(user.id, googleUser);
             console.log(googleUser);
         } else {
+            const admins = await users.findAdmins();
+            if (admins.length === 0) {
+                googleUser.role_id = 3;
+            }
             user = await users.insert(googleUser);
         }
 

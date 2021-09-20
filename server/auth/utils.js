@@ -11,19 +11,9 @@ function create(user) {
     });
 }
 
-// function verify(token) {
-//     console.log('verifying with secret', process.env.TOKEN_SECRET);
-//     return new Promise((resolve, reject) => {
-//         jwt.verify(token, process.env.TOKEN_SECRET, (error, payload) => {
-
-//             if (error) return reject(error);
-//             resolve(payload);
-//         });
-//     });
-// }
 
 function verify(token) {
-    //console.log('verifying with secret', process.env.TOKEN_SECRET);
+    console.log('verifying with secret', process.env.TOKEN_SECRET);
     return new Promise((resolve, reject) => {
         jwt.verify(token, process.env.TOKEN_SECRET, (error, payload) => {
             if (error) return reject(error);

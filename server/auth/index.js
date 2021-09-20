@@ -6,6 +6,16 @@ const { create } = require('./utils')
 
 const router = express.Router();
 
+router.get('/isAdmin', async(req, res) => {
+    if (req.user) {
+        if (req.user.role_id === 3) {
+            return res.json({
+                isAdmin: true
+            });
+        }
+    }
+    res.json({ isAdmin: false });
+});
 
 
 router.get('/google',

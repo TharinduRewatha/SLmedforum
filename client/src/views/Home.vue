@@ -29,7 +29,7 @@ export default {
         if(window.location.hostname ==='localhost'){
           return 'http://localhost:3000/auth/google'
         }else{
-          return 'http://slmedforum.vercel.app/auth/google';
+          return 'https://slmedforum.vercel.app/auth/google';
         }
       }
     }

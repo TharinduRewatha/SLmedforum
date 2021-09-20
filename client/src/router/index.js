@@ -1,24 +1,88 @@
-import Vue from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router';
+// import { createRouter, createWebHashHistory } from 'vue-router';
+// import Home from '../views/Home.vue';
+// import LoginToken from '../views/LoginToken.vue';
+// import Admin from '../views/Admin.vue';
+// import Forum from '../views/Forum.vue';
+
+
+// import store from '../store';
+
+
+
+// const routes = [{
+//         path: '/',
+//         name: 'home',
+//         component: Home,
+//     },
+//     {
+//         path: '/forum',
+//         name: 'forum',
+//         component: Forum,
+//     },
+//     {
+//         path: '/login/token/:token',
+//         name: 'login-token',
+//         component: LoginToken,
+//     },
+//     {
+//         path: '/admin',
+//         name: 'admin',
+//         component: Admin,
+//         beforeEnter(to, from, next) {
+//             if (store.getters.isLoggedIn) {
+//                 next();
+//             } else {
+//                 next('/');
+//             }
+//         },
+//     },
+
+// ];
+
+// const router = createRouter({
+//     history: createWebHashHistory(),
+//     routes,
+// });
+
+// export default router;
+import Vue from 'vue';
+import Router from 'vue-router';
 import Home from '../views/Home.vue';
 import LoginToken from '../views/LoginToken.vue';
+import Admin from '../views/Admin.vue';
+import Forum from '../views/Forum.vue';
 
-const routes = [{
-        path: '/',
-        name: 'Home',
-        component: Home,
-    },
-    {
-        path: '/login/token/:token',
-        name: 'login-toke',
-        component: LoginToken,
-    },
+import store from '../store';
 
-];
+Vue.use(Router);
 
-const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
+export default new Router({
+    routes: [{
+            path: '/',
+            name: 'home',
+            component: Home,
+        },
+        {
+            path: '/forum',
+            name: 'forum',
+            component: Forum,
+        },
+        {
+            path: '/login/token/:token',
+            name: 'login-token',
+            component: LoginToken,
+        },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: Admin,
+            beforeEnter(to, from, next) {
+                if (store.getters.isLoggedIn) {
+                    next();
+                } else {
+                    next('/');
+                }
+            },
+        },
+    ],
 });
-
-export default router;

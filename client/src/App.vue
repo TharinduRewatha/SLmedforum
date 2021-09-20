@@ -7,6 +7,7 @@
 
 <script>
 
+import { mapActions } from 'vuex';
 import AppNav from '@/components/AppNav';
 
 export default {
@@ -14,7 +15,14 @@ export default {
   components: {
     AppNav,
   },
+   mounted() {
+    this.login(localStorage.token);
+    this.loadCategories();
+  },
+   methods: mapActions(['login', 'loadCategories']),
 
 };
 </script>
 
+<style lang="scss">
+</style>
